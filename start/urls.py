@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from myUsers import views as register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('reg/', register.regUser, name='register'),
     path("", include("myapp.urls"))
 ]

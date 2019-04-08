@@ -36,18 +36,19 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu">
-                    <li  class="nav-item font-weight-bold">
-                        <a class="nav-link" href="{% url 'home' %}">на главную <span class="sr-only">(current)</span></a>
+                    <li class="nav-item font-weight-bold">
+                        <a class="nav-link" href="{% url 'home' %}">на главную <span
+                                class="sr-only">(current)</span></a>
                     </li>
-                    <li  class="nav-item font-weight-bold">
+                    <li class="nav-item font-weight-bold">
                         <a class="nav-link" href="{% url 'blog' %}">статьи </a>
                     </li>
-                    <li  class="nav-item font-weight-bold">
+                    <li class="nav-item font-weight-bold">
                         <a class="nav-link" href="{% url 'contact' %}">контакты</a>
                     </li>
                 </ul>
                 <div class="navbar-nav log">
-                    <a href="#" class="btn btn-outline-secondary log__link">регистрация</a>
+                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>
                     <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link">войти</a>
                 </div>
             </div>
@@ -55,6 +56,13 @@
     </header>
     {#CONTENT ========================================================================#}
     <main class="main mt-5 container-fluid">
+        {% if messages %}
+            {% for message in messages %}
+               <div class="alert alert-success mt-5">
+                {{ message }}
+               </div>
+            {% endfor %}
+        {% endif %}
         <div class="row">
             {# ==========================   MAIN CONTEN  =====================================================#}
             {% block main_section %}

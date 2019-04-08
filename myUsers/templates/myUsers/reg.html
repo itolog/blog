@@ -1,0 +1,11 @@
+{% extends "myapp/index.html" %}
+{% load crispy_forms_tags %}
+{% block main_section %}
+    <div class="form-section mt-5">
+        <form method="post" class="mb-5">
+            {% csrf_token %}
+            {{ form|crispy}}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock %}
