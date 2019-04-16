@@ -1,52 +1,25 @@
 {% extends "myapp/index.html" %}
 {% block main_section %}
     <div class="col-md-8">
-        <h1 class="mt-5 mb-4">Блог</h1>
-        {% for post in news %}
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-header">добавленно : {{ post.date|date:'d E Y/ H:i' }}</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.content|safe|truncatechars:200 }}</p>
-                    <hr>
-                    <div class="row justify-content-md-center align-items-center">
-                        <h6 class="col-md-8">добавил : {{ post.user }}</h6>
-
-                    </div>
+       <div class="blog-header mt-5 mb-2">
+            <a href="{% url 'blog' %}" class="btn btn-primary">назад</a>
+       </div>
+        <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">добавленно : {{ object.date|date:'d E Y/ H:i' }}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ object.title }}</h5>
+                <p class="card-text">{{ object.content|safe }}</p>
+                <hr>
+                <div class="row justify-content-md-center align-items-center">
+                    <h6 class="col-md-8">добавил : {{ object.user }}</h6>
+                    <a href="{{ object.href }}" target="_blank" class="col-md-4 list-group-item list-group-item-action">перейти</a>
                 </div>
-                <a href="{% url 'blog-detail' post.id %}" class="btn btn-outline-warning">подробнее</a>
+                {% if object.user == user %}
+                    <a href="{% url 'blog-update' object.id%}" class="btn btn-warning">обновить статью</a>
+                    <a href="{% url 'blog-del' object.id%}" class="btn btn-danger">удалить статью</a>
+                {% endif %}
             </div>
-        {% endfor %}
-        {% if is_paginated %}
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-left">
-                    {% if page_obj.has_previous %}
-                         <li class="page-item"><a class="page-link" href="?page=1">начало</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
-                        </li>
-                    {% else %}
-                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages}}">конец</a>
-                        <li class="page-item disabled"><a class="page-link" href="#"><span>&laquo;</span></a></li>
-
-                    {% endif %}
-                    {% for i in paginator.page_range %}
-                        {% if page_obj.number == i %}
-                            <li class="page-item active"><a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
-                            </li>
-                        {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
-                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    {% if page_obj.has_next %}
-                        <li class="page-item"><a class="page-link"
-                                                 href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-                    {% else %}
-                        <li class="page-item disabled"><a class="page-link" href="#"><span>&raquo;</span></a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        {% endif %}
+        </div>
     </div>
 {% endblock main_section %}
 

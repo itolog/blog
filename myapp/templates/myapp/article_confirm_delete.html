@@ -1,0 +1,10 @@
+{% extends "myapp/index.html" %}
+{% block main_section %}
+    <div class="form-section mt-5">
+        <h4>Точно удалить статью : {{ object.title }}</h4>
+        <form method="post" class="mb-5">
+            {% csrf_token %}
+            <input type="submit" value="удалить" class="btn btn-danger">
+        </form>
+    </div>
+{% endblock %}
