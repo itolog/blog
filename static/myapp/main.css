@@ -1,0 +1,59 @@
+body {
+    font-family: cursive, "Fira Code";
+    background: rgb(73, 192, 240);
+    background: -moz-linear-gradient(top, rgba(73, 192, 240, 1) 0%, rgba(44, 175, 227, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(73, 192, 240, 1) 0%, rgba(44, 175, 227, 1) 100%);
+    background: linear-gradient(to bottom, rgba(73, 192, 240, 1) 0%, rgba(44, 175, 227, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#49c0f0', endColorstr='#2cafe3', GradientType=0);
+}
+
+/*HOME PAGE =============*/
+.home {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+    margin-top: 10%;
+    padding: 10px 0 10px 0;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+}
+
+.hero__ava {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    border: 1px solid white;
+    overflow: hidden;
+    width: 140px;
+    height: 140px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.hero__img{
+    width: 100%;
+    height: auto;
+}
+
+.home__info {
+    margin: 1%;
+}
+
+.log {
+    display: flex;
+    min-width: 200px;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.log__link {
+    margin-bottom: 10px;
+}
+.form-section{
+    margin: auto;
+}
+.blog-header{
+    display: flex;
+    justify-content: flex-end;
+}
