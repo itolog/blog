@@ -122,4 +122,4 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-ALLOWED_HOSTS = ['https://itologjs-blog.herokuapp.com/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['itologjs-blog.herokuapp.com', 'localhost', '127.0.0.1']
