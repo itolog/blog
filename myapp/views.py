@@ -26,7 +26,7 @@ class BlogNewsView(ListView):
     # queryset = Article.objects.all()
     ordering = ['-id']
     paginate_by = 5
-    print(InfoUser.objects.all())
+    
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(BlogNewsView, self).get_context_data(**kwargs)

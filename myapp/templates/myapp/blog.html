@@ -53,19 +53,21 @@
 {% endblock main_section %}
 
 {% block aside_section %}
-    <aside class="col-md-4 align-items-center mt-5">
-        <div class="card" style="width: 250px;height: 350px">
-            <img src="{% static 'myapp/fsoc.jpg' %}"
-                 class="card-img-top" alt="itologJS">
-            <div class="card-body">
-                {% for item in infoUser %}
-                    <p class="card-text">
-                        {{ item.text }}
-                    </p>
+    {% if infoUser %}
+        <aside class="col-md-4 align-items-center mt-5">
+            <div class="card" style="width: 250px;height: 350px">
+                <img src="{% static 'myapp/fsoc.jpg' %}"
+                     class="card-img-top" alt="itologJS">
+                <div class="card-body">
+                    {% for item in infoUser %}
+                        <p class="card-text">
+                            {{ item.text }}
+                        </p>
 
-                    <a href="{{ item.href }}" target="_blank">перейти на профиль</a>
-                {% endfor %}
+                        <a href="{{ item.href }}" target="_blank">перейти на профиль</a>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </aside>
+        </aside>
+    {% endif %}
 {% endblock aside_section %}
