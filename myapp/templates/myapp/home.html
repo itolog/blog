@@ -3,7 +3,7 @@
 {% block main_section %}
     <section class="home col">
         <div class="hero__ava">
-            <img class="hero__img" src="{% static 'myapp/ava.jpg' %}" alt="hero-img">
+            <img class="hero__img" src="{{ user.profile.img.url }}" alt="hero-img">
         </div>
         <div class="home__info">
             <h1>Сергей Романиченко</h1>
