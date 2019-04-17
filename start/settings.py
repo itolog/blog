@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-db_up = dj_database_url.config()
+db_up = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_up)
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
