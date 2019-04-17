@@ -16,3 +16,10 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog-detail', kwargs={'pk': self.pk})
+
+class InfoUser(models.Model):
+    text = models.TextField(default="Фронтенд разработчик.Так же знаком и с серверной стороной разработки.")
+    href = models.TextField(default="https://portfolio-mmrqljtoef.now.sh/")
+
+    def __str__(self):
+        return self.text

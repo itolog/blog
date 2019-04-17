@@ -57,3 +57,7 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+
+.pagination {
+    margin: 50px 0 30px 0;
+}

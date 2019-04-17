@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView ,DetailView ,CreateView , UpdateView ,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Article
+from .models import Article, InfoUser
 
 # Create your views here.
 
@@ -26,12 +26,13 @@ class BlogNewsView(ListView):
     # queryset = Article.objects.all()
     ordering = ['-id']
     paginate_by = 5
-
+    print(InfoUser.objects.all())
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(BlogNewsView, self).get_context_data(**kwargs)
         # Add in the publisher
         context['title'] = "Статьи IT"
+        context['infoUser'] = InfoUser.objects.all()
         return context
 
 

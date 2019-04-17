@@ -4,7 +4,7 @@
        <div class="blog-header mt-5 mb-2">
             <a href="{% url 'blog' %}" class="btn btn-primary">назад</a>
        </div>
-        <div class="card text-white bg-secondary mb-3">
+        <div class="card text-white bg-dark  mb-3">
             <div class="card-header">добавленно : {{ object.date|date:'d E Y/ H:i' }}</div>
             <div class="card-body">
                 <h5 class="card-title">{{ object.title }}</h5>
@@ -12,11 +12,11 @@
                 <hr>
                 <div class="row justify-content-md-center align-items-center">
                     <h6 class="col-md-8">добавил : {{ object.user }}</h6>
-                    <a href="{{ object.href }}" target="_blank" class="col-md-4 list-group-item list-group-item-action">перейти</a>
+                    <a href="{{ object.href }}" target="_blank" class="btn btn-outline-success mb-2">перейти</a>
                 </div>
                 {% if object.user == user %}
-                    <a href="{% url 'blog-update' object.id%}" class="btn btn-warning">обновить статью</a>
-                    <a href="{% url 'blog-del' object.id%}" class="btn btn-danger">удалить статью</a>
+                    <a href="{% url 'blog-update' object.id%}" class="btn btn-warning mb-2">обновить статью</a>
+                    <a href="{% url 'blog-del' object.id%}" class="btn btn-danger mb-2">удалить статью</a>
                 {% endif %}
             </div>
         </div>
