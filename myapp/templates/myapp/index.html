@@ -7,11 +7,22 @@
     {#  ========================  META ============================#}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# ===========================    SEO   ==============================================================   #}
+    <meta name="Description" content="Личный блог ItologJS.Frontend developer.Javascript,Python,Java,Kotlin">
+    <meta name="og:title" property="og:title" content="ItologJS Blog">
+    <meta name="robots" content="index, follow">
 
+    {#  =========================  FAVICON ===============================#}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'myapp/fav/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'myapp/fav/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'myapp/fav/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'myapp/fav/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'myapp/fav/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     {#  ==========================  BOOTSTARP ==============================================#}
-    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preload" href="{% static 'myapp/bootstrap.min.css' %}" as="style">
+    <link rel="stylesheet" href="{% static 'myapp/bootstrap.min.css' %}">
     <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -50,7 +61,7 @@
                 </ul>
 
                 <div class="navbar-nav log">
-{#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
+                    {#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
                     <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link">войти</a>
                 </div>
             </div>
