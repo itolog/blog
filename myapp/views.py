@@ -26,7 +26,7 @@ class BlogNewsView(ListView):
     # queryset = Article.objects.all()
     ordering = ['-id']
     paginate_by = 5
-    
+
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(BlogNewsView, self).get_context_data(**kwargs)
@@ -62,7 +62,7 @@ class CreateNews(LoginRequiredMixin, CreateView):
 #  Update Article
 class UpdateNewsView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Article
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'href']
 
     def form_valid(self, form):
         form.instance.user = self.request.user

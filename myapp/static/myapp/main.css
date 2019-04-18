@@ -61,3 +61,15 @@ body {
 .pagination {
     margin: 50px 0 30px 0;
 }
+.li-min:hover{
+    background: #7f806f;
+    color: #a8c9ff;
+    transition: 0.3s;
+    text-align: center;
+    border-radius: 5px;
+  }
+@media only screen and (max-width: 990px) {
+  .li-min{
+    margin-bottom: 10px;
+  }
+}

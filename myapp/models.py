@@ -9,7 +9,7 @@ class Article(models.Model):
     content = models.TextField()
     date = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    href = models.TextField()
+    href = models.TextField(null=True,blank=True)
 
     def __str__(self):
         return self.title

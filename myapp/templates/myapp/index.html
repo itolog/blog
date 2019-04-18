@@ -9,18 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {#  ==========================  BOOTSTARP ==============================================#}
+    <link rel="prefetch" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     {#    MAIN STYLE #}
+    <link rel="preload" href="{% static 'myapp/main.css' %}" as="style">
     <link rel="stylesheet" href="{% static 'myapp/main.css' %}">
 </head>
 <body class="bg-dark">
@@ -37,17 +39,18 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu">
 
-                    <li class="nav-item font-weight-bold">
+                    <li class="nav-item font-weight-bold li-min">
                         <a class="nav-link" href="{% url 'blog' %}">статьи </a>
                     </li>
                     {% if  user.is_authenticated %}
-                        <li class="nav-item font-weight-bold">
+                        <li class="nav-item font-weight-bold li-min">
                             <a class="nav-link" href="{% url 'blog-add' %}">добавить статью</a>
                         </li>
                     {% endif %}
                 </ul>
+
                 <div class="navbar-nav log">
-                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>
+{#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
                     <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link">войти</a>
                 </div>
             </div>
