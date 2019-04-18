@@ -35,6 +35,10 @@
     {#    MAIN STYLE #}
     <link rel="preload" href="{% static 'myapp/main.css' %}" as="style">
     <link rel="stylesheet" href="{% static 'myapp/main.css' %}">
+    {#   ==========================  GOOGLE ANALITICS =============================   #}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82994547-2"></script>
+
 </head>
 <body class="bg-dark">
 <div class="wrapp">
@@ -90,5 +94,13 @@
 </div>
 {# ============================================   SCRIPTS   ============================================== #}
 <script src="{% static 'myapp/main.js' %}"></script>
+ <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-82994547-2');
+    </script>
+    {% comment %}{% endcomment %}
 </body>
 </html>
