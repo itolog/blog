@@ -55,18 +55,18 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu">
 
                     <li class="nav-item font-weight-bold li-min">
-                        <a class="nav-link" href="{% url 'blog' %}">статьи </a>
+                        <a class="nav-link text-white" href="{% url 'blog' %}">статьи </a>
                     </li>
                     {% if  user.is_authenticated %}
                         <li class="nav-item font-weight-bold li-min">
-                            <a class="nav-link" href="{% url 'blog-add' %}">добавить статью</a>
+                            <a class="nav-link text-white" href="{% url 'blog-add' %}">добавить статью</a>
                         </li>
                     {% endif %}
                 </ul>
 
                 <div class="navbar-nav log">
                     {#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
-                    <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link">войти</a>
+                    <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link text-white">войти</a>
                 </div>
             </div>
         </nav>
