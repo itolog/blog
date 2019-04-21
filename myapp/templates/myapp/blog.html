@@ -15,7 +15,7 @@
 
                     </div>
                 </div>
-                <a href="{% url 'blog-detail' post.id %}" class="btn btn-outline-warning">подробнее</a>
+                <a href="{% url 'blog-detail' post.id %}" class="btn btn-outline-warning bg-dark detail-href">подробнее</a>
             </div>
         {% endfor %}
         {% if is_paginated %}
@@ -64,7 +64,7 @@
                             {{ item.text }}
                         </p>
 
-                        <a href="{{ item.href }}" target="_blank">перейти на профиль</a>
+                        <a href="{{ item.href }}" target="_blank" rel="noopener">перейти на профиль</a>
                     {% endfor %}
                 </div>
             </div>
