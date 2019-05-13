@@ -1,6 +1,7 @@
 {% load static %}
+{% load inline_static_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html ⚡ lang="ru">
 <head>
     <title>{{ title }}</title>
 
@@ -11,7 +12,14 @@
     <meta name="Description" content="Личный блог ItologJS.Frontend developer.Javascript,Python,Java,Kotlin">
     <meta name="og:title" property="og:title" content="ItologJS Blog">
     <meta name="robots" content="index, follow">
+    {# =========================== AMP  =====================================   #}
+    <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
+    <link rel="canonical" href=".">
+
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
     {#  =========================  FAVICON ===============================#}
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'myapp/fav/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'myapp/fav/favicon-32x32.png' %}">
@@ -21,23 +29,11 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     {#  ==========================  BOOTSTARP ==============================================#}
-    <link rel="preload" href="{% static 'myapp/bootstrap.min.css' %}" as="style">
-    <link rel="stylesheet" href="{% static 'myapp/bootstrap.min.css' %}">
-    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    {#    MAIN STYLE #}
-    <link rel="preload" href="{% static 'myapp/main.css' %}" as="style">
-    <link rel="stylesheet" href="{% static 'myapp/main.css' %}">
+    <style amp-custom>{% inline_style 'myapp/bootstrap.min.css' %}</style>
+    {#  ========================== MAIN STYLE ==============================================#}
+    <style amp-custom>{% inline_style 'myapp/main.css' %}</style>
     {#   ==========================  GOOGLE ANALITICS =============================   #}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82994547-2"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
 </head>
 <body class="bg-dark">
@@ -46,8 +42,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <a class="navbar-brand" href="{% url 'home' %}">ItologJS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <button on="tap:sidebar.toggle" class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -59,20 +54,51 @@
                     </li>
                     {% if  user.is_authenticated %}
                         <li class="nav-item font-weight-bold li-min">
-                            <a class="nav-link text-white" href="{% url 'blog-add' %}" rel="noopener">добавить статью</a>
+                            <a class="nav-link text-white" href="{% url 'blog-add' %}" rel="noopener">добавить
+                                статью</a>
                         </li>
                     {% endif %}
                 </ul>
 
                 <div class="navbar-nav log">
                     {#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
-                    <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link text-white" rel="noopener">войти</a>
+                    <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link text-white"
+                       rel="noopener">войти</a>
                 </div>
             </div>
+
         </nav>
+
     </header>
     {#CONTENT ========================================================================#}
     <main class="main mt-5 container-fluid">
+        {# ===================  SIDE BAR =======================================   #}
+        <amp-sidebar id="sidebar"
+                     class="bg-dark"
+                     layout="nodisplay"
+                     side="left">
+            <ul class="navbar-nav  mr-auto mt-2 mt-lg-0">
+                <li class="nav-item font-weight-bold li-min">
+                     <a class="navbar-brand" href="{% url 'home' %}">ItologJS</a>
+                </li>
+                <li class="nav-item font-weight-bold li-min">
+                    <a class="nav-link text-white" href="{% url 'blog' %}" rel="noopener">статьи </a>
+                </li>
+                {% if  user.is_authenticated %}
+                    <li class="nav-item font-weight-bold li-min">
+                        <a class="nav-link text-white" href="{% url 'blog-add' %}" rel="noopener">добавить
+                            статью</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="navbar-nav log">
+                {#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
+                <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link text-white"
+                   rel="noopener">войти</a>
+            </div>
+        </amp-sidebar>
+        {# ======================== SIDE BAR END ============================================   #}
         {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-success mt-5">
@@ -92,15 +118,18 @@
         </div>
     </main>
 </div>
-{# ============================================   SCRIPTS   ============================================== #}
-<script src="{% static 'myapp/main.js' %}"></script>
- <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-82994547-2');
+{% comment %}=================  GOOGLE ====================={% endcomment %}
+<amp-analytics type="gtag" data-credentials="include">
+    <script type="application/json">
+    {
+      "vars" : {
+        "gtag_id": "UA-82994547-2",
+        "config" : {
+          "UA-82994547-2": { "groups": "default" }
+        }
+      }
+    }
     </script>
-    {% comment %}{% endcomment %}
+</amp-analytics>
 </body>
 </html>

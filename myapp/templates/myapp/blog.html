@@ -15,7 +15,8 @@
 
                     </div>
                 </div>
-                <a href="{% url 'blog-detail' post.id %}" class="btn btn-outline-warning bg-dark detail-href">подробнее</a>
+                <a href="{% url 'blog-detail' post.id %}"
+                   class="btn btn-outline-warning bg-dark detail-href">подробнее</a>
             </div>
         {% endfor %}
         {% if is_paginated %}
@@ -56,8 +57,13 @@
     {% if infoUser %}
         <aside class="col-md-4 align-items-center mt-5">
             <div class="card" style="width: 250px;height: 350px">
-                <img src="{% static 'myapp/fsoc.jpg' %}"
-                     class="card-img-top" alt="itologJS">
+                <amp-img src="{% static 'myapp/fsoc.jpg' %}"
+                         class="card-img-top"
+                         width="250"
+                         height="140"
+                         layout="responsive"
+                         alt="itologJS">
+                </amp-img>
                 <div class="card-body">
                     {% for item in infoUser %}
                         <p class="card-text">
