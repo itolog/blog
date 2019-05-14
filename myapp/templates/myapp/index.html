@@ -1,5 +1,7 @@
 {% load static %}
+{% load compress %}
 {% load inline_static_tags %}
+{% spaceless %}
 <!DOCTYPE html>
 <html ⚡ lang="ru">
 <head>
@@ -29,14 +31,46 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     {#  ==========================  BOOTSTARP ==============================================#}
-    <style amp-custom>{% inline_style 'myapp/bootstrap.min.css' %}</style>
+    {% compress css %}
+    <style amp-custom>
+        {% inline_style 'myapp/bootstrap.min.css' %}
+        {% inline_style 'myapp/main.css' %}
+    </style>
+    {% endcompress %}
     {#  ========================== MAIN STYLE ==============================================#}
-    <style amp-custom>{% inline_style 'myapp/main.css' %}</style>
+{#    <style amp-custom>{% inline_style 'myapp/main.css' %}</style>#}
     {#   ==========================  GOOGLE ANALITICS =============================   #}
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
 </head>
 <body class="bg-dark">
+ {# ===================  SIDE BAR =======================================   #}
+        <amp-sidebar id="sidebar"
+                     class="bg-dark"
+                     layout="nodisplay"
+                     side="left">
+            <ul class="navbar-nav  mr-auto mt-2 mt-lg-0">
+                <li class="nav-item font-weight-bold li-min">
+                     <a class="navbar-brand" href="{% url 'home' %}">ItologJS</a>
+                </li>
+                <li class="nav-item font-weight-bold li-min">
+                    <a class="nav-link text-white" href="{% url 'blog' %}" rel="noopener">статьи </a>
+                </li>
+                {% if  user.is_authenticated %}
+                    <li class="nav-item font-weight-bold li-min">
+                        <a class="nav-link text-white" href="{% url 'blog-add' %}" rel="noopener">добавить
+                            статью</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="navbar-nav log">
+                {#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
+                <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link text-white"
+                   rel="noopener">войти</a>
+            </div>
+        </amp-sidebar>
+        {# ======================== SIDE BAR END ============================================   #}
 <div class="wrapp">
     {#HEADER ========================================================================#}
     <header>
@@ -72,33 +106,6 @@
     </header>
     {#CONTENT ========================================================================#}
     <main class="main mt-5 container-fluid">
-        {# ===================  SIDE BAR =======================================   #}
-        <amp-sidebar id="sidebar"
-                     class="bg-dark"
-                     layout="nodisplay"
-                     side="left">
-            <ul class="navbar-nav  mr-auto mt-2 mt-lg-0">
-                <li class="nav-item font-weight-bold li-min">
-                     <a class="navbar-brand" href="{% url 'home' %}">ItologJS</a>
-                </li>
-                <li class="nav-item font-weight-bold li-min">
-                    <a class="nav-link text-white" href="{% url 'blog' %}" rel="noopener">статьи </a>
-                </li>
-                {% if  user.is_authenticated %}
-                    <li class="nav-item font-weight-bold li-min">
-                        <a class="nav-link text-white" href="{% url 'blog-add' %}" rel="noopener">добавить
-                            статью</a>
-                    </li>
-                {% endif %}
-            </ul>
-
-            <div class="navbar-nav log">
-                {#                    <a href="{% url 'register' %}" class="btn btn-outline-secondary log__link">регистрация</a>#}
-                <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary log__link text-white"
-                   rel="noopener">войти</a>
-            </div>
-        </amp-sidebar>
-        {# ======================== SIDE BAR END ============================================   #}
         {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-success mt-5">
@@ -133,3 +140,4 @@
 </amp-analytics>
 </body>
 </html>
+{% endspaceless %}
